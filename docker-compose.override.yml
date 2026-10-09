@@ -1,0 +1,39 @@
+# Local development overrides: Dockerfile.dev, bind mounts, hot reload, exposed DB/Redis ports.
+services:
+  postgres:
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+
+  redis:
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+
+  backend-api:
+    build:
+      dockerfile: Dockerfile.dev
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./services/backend-api:/app
+      - /app/node_modules          # keep container's node_modules, don't shadow with host's
+
+  worker-service:
+    build:
+      target: dev                  # `dev` stage in services/worker-service/Dockerfile
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./services/worker-service:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+      WATCHPACK_POLLING: "true"    # reliable file watching on Docker Desktop (Windows/macOS)
+    volumes:
+      - ./services/frontend:/app
+      - /app/node_modules
+      - /app/.next

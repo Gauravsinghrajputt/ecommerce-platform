@@ -1,0 +1,8 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 4000
+# tsx watch restarts on file change (source is bind-mounted in docker-compose.override.yml)
+CMD ["npm", "run", "dev"]

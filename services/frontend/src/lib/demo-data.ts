@@ -1,0 +1,18 @@
+import type { Product } from "./types";
+
+// Mirrors the seed in docker/postgres/init.sql (same slugs, prices, stock, order: newest first).
+// Used when NEXT_PUBLIC_DEMO_MODE=true or the API is unreachable.
+export const DEMO_PRODUCTS: Product[] = [
+  { id: "demo-linen-overshirt", slug: "linen-overshirt", name: "Linen Overshirt", category: "apparel", description: "A relaxed, button-up overshirt with two chest pockets. Wear it open over a tee or buttoned up on its own.", price_cents: 179900, currency: "INR", stock: 12, image_url: "/products/linen-overshirt.svg" },
+  { id: "demo-crewneck-sweatshirt", slug: "crewneck-sweatshirt", name: "Crewneck Sweatshirt", category: "apparel", description: "A midweight crewneck with ribbed cuffs and hem. Plain on purpose, so it goes with everything.", price_cents: 129900, currency: "INR", stock: 40, image_url: "/products/crewneck-sweatshirt.svg" },
+  { id: "demo-classic-tee", slug: "classic-tee", name: "Classic Cotton Tee", category: "apparel", description: "Soft 100% cotton t-shirt with a regular fit and a clean crew neck.", price_cents: 49900, currency: "INR", stock: 100, image_url: "/products/classic-tee.svg" },
+  { id: "demo-laptop-sleeve", slug: "laptop-sleeve", name: "Laptop Sleeve", category: "bags", description: "A slim zip sleeve with a soft lining. Slides into a backpack or tote without adding bulk.", price_cents: 89900, currency: "INR", stock: 35, image_url: "/products/laptop-sleeve.svg" },
+  { id: "demo-everyday-tote", slug: "everyday-tote", name: "Everyday Tote", category: "bags", description: "A roomy canvas tote with two long handles. Fits a laptop, a book and lunch.", price_cents: 69900, currency: "INR", stock: 80, image_url: "/products/everyday-tote.svg" },
+  { id: "demo-canvas-backpack", slug: "canvas-backpack", name: "Canvas Backpack", category: "bags", description: "Durable 20L everyday backpack with a zip front pocket and a padded back.", price_cents: 129900, currency: "INR", stock: 50, image_url: "/products/canvas-backpack.svg" },
+  { id: "demo-ceramic-planter", slug: "ceramic-planter", name: "Ceramic Planter", category: "home-desk", description: "A small glazed planter for a desk or windowsill. Drainage hole not included; use it as a cover pot.", price_cents: 54900, currency: "INR", stock: 0, image_url: "/products/ceramic-planter.svg" },
+  { id: "demo-desk-mat", slug: "desk-mat", name: "Felt Desk Mat", category: "home-desk", description: "A large felt mat that covers your keyboard and mouse area and keeps the desk quiet.", price_cents: 99900, currency: "INR", stock: 60, image_url: "/products/desk-mat.svg" },
+  { id: "demo-desk-lamp", slug: "desk-lamp", name: "LED Desk Lamp", category: "home-desk", description: "Dimmable LED lamp with a pivoting arm and USB charging port.", price_cents: 149900, currency: "INR", stock: 4, image_url: "/products/desk-lamp.svg" },
+  { id: "demo-insulated-tumbler", slug: "insulated-tumbler", name: "Insulated Tumbler", category: "drinkware", description: "A double-wall tumbler with a lid and straw, sized to fit most car cup holders.", price_cents: 109900, currency: "INR", stock: 25, image_url: "/products/insulated-tumbler.svg" },
+  { id: "demo-ceramic-mug", slug: "ceramic-mug", name: "Ceramic Mug", category: "drinkware", description: "A sturdy 350ml stoneware mug with a comfortable handle.", price_cents: 39900, currency: "INR", stock: 120, image_url: "/products/ceramic-mug.svg" },
+  { id: "demo-steel-bottle", slug: "steel-bottle", name: "Steel Water Bottle", category: "drinkware", description: "Insulated 750ml stainless steel bottle with a screw cap.", price_cents: 79900, currency: "INR", stock: 75, image_url: "/products/steel-bottle.svg" },
+];
