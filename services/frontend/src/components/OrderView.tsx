@@ -26,7 +26,7 @@ export default function OrderView({ id }: { id: string }) {
     <div>
       <CheckCircle2 aria-hidden className="h-10 w-10 text-success" />
       <h1 className="mt-4 text-3xl font-semibold">Thanks, {a.name.split(" ")[0]}. Your demo order is placed.</h1>
-      <p className="mt-2 text-ink-soft">Order number <strong className="font-semibold text-ink">{order.id}</strong>. A confirmation would be sent to {a.email}.</p>
+      <p className="mt-2 text-ink-soft">Order number <strong className="font-semibold text-ink">{order.id}</strong>. This order is saved in this browser, so you can come back to this page on this device.</p>
       <p className="mt-3 inline-block rounded-control bg-accent-soft px-3 py-2 text-sm text-accent-dark">Demo order: no payment was taken and nothing will be shipped.</p>
 
       <div className="mt-10 grid gap-8 md:grid-cols-[1fr_20rem]">

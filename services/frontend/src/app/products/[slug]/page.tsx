@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, RotateCcw, Truck } from "lucide-react";
+import { ChevronDown, ChevronRight, RotateCcw, Truck } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
 import ProductPurchase from "@/components/ProductPurchase";
@@ -65,14 +65,23 @@ export default async function ProductPage({ params }: Props) {
           <p className="text-xs font-medium uppercase tracking-wide text-ink-muted">{categoryLabel(product.category)}</p>
           <h1 className="mt-1 text-3xl font-semibold sm:text-4xl">{product.name}</h1>
           <p className="mt-3 text-2xl font-semibold">{formatPrice(product.price_cents, product.currency)}</p>
-          <p className="mt-1 text-xs text-ink-muted">Inclusive of all taxes in this demo.</p>
           <div className="mt-4"><StockStatus stock={product.stock} /></div>
           <p className="mt-5 leading-relaxed text-ink-soft">{product.description}</p>
           <ProductPurchase product={product} />
-          <ul className="mt-8 space-y-3 border-t border-line pt-6 text-sm text-ink-soft">
-            <li className="flex gap-3"><Truck aria-hidden className="h-5 w-5 shrink-0 text-accent" />Free delivery over {formatPrice(brand.freeShippingThresholdCents)}, otherwise {formatPrice(brand.flatShippingCents)}.</li>
-            <li className="flex gap-3"><RotateCcw aria-hidden className="h-5 w-5 shrink-0 text-accent" />{brand.returnDays}-day returns on unused items.</li>
-          </ul>
+          <div className="mt-8 divide-y divide-line border-y border-line">
+            {[
+              { title: "Delivery", icon: Truck, body: `Free over ${formatPrice(brand.freeShippingThresholdCents)}, otherwise a flat ${formatPrice(brand.flatShippingCents)}. This is a demo store, so nothing is actually shipped.` },
+              { title: "Returns", icon: RotateCcw, body: `Unused items can be returned within ${brand.returnDays} days.` },
+            ].map(({ title, icon: Icon, body }) => (
+              <details key={title} className="group py-4">
+                <summary className="flex cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">
+                  <span className="flex items-center gap-3"><Icon aria-hidden className="h-5 w-5 text-accent" />{title}</span>
+                  <ChevronDown aria-hidden className="h-4 w-4 transition-transform group-open:rotate-180" />
+                </summary>
+                <p className="mt-3 pl-8 text-sm leading-relaxed text-ink-soft">{body}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
 

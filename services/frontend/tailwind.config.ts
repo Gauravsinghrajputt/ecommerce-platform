@@ -21,6 +21,10 @@ const config: Config = {
         card: "0 1px 2px rgba(27,26,23,.05), 0 4px 16px rgba(27,26,23,.06)",
         pop: "0 12px 40px rgba(27,26,23,.18)",
       },
+      keyframes: {
+        "fade-up": { "0%": { opacity: "0", transform: "translateY(14px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+      },
+      animation: { "fade-up": "fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both" },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-text)", "system-ui", "sans-serif"],

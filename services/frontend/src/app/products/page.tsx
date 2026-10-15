@@ -7,6 +7,7 @@ import ShopControls from "@/components/ShopControls";
 import { getCatalog } from "@/lib/api";
 import { PAGE_SIZE, parseShopParams, queryProducts, type RawSearchParams } from "@/lib/catalog";
 import { categoryLabel } from "@/lib/categories";
+import { plural } from "@/lib/text";
 
 export async function generateMetadata({ searchParams }: { searchParams: RawSearchParams }): Promise<Metadata> {
   const p = parseShopParams(searchParams);
@@ -25,7 +26,7 @@ export default async function ShopPage({ searchParams }: { searchParams: RawSear
       <h1 className="text-3xl font-semibold">{params.category ? categoryLabel(params.category) : "All products"}</h1>
       <div className="mt-6"><ShopControls params={params} /></div>
       <p role="status" aria-live="polite" className="mt-6 text-sm text-ink-muted">
-        {total === 0 ? "No products found" : `Showing ${(page - 1) * PAGE_SIZE + 1}–${(page - 1) * PAGE_SIZE + items.length} of ${total} products`}
+        {total === 0 ? "No products found" : `Showing ${(page - 1) * PAGE_SIZE + 1}–${(page - 1) * PAGE_SIZE + items.length} of ${plural(total, "product")}`}
       </p>
       {items.length === 0 ? (
         <div className="flex flex-col items-center py-16 text-center">

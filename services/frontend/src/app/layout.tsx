@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { getCatalog } from "@/lib/api";
 import { brand } from "@/lib/brand";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import CartDrawer from "@/components/cart/CartDrawer";
 import CartProvider from "@/components/cart/CartProvider";
 import SiteFooter from "@/components/SiteFooter";
@@ -29,6 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="flex min-h-screen flex-col">
         <a href="#main" className="sr-only z-50 rounded-control bg-surface px-4 py-2 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
         <CartProvider>
+          <AnnouncementBar />
           <SiteHeader isDemo={source === "demo"} />
           <main id="main" className="flex-1">{children}</main>
           <SiteFooter />
